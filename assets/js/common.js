@@ -1,7 +1,13 @@
 $(document).ready(function () {
 
+    //Notifications Bell Btn Click
+    $('#notifications-btn').on('click', function () {
+        $('.notifications-sidebar').addClass('show');
+        $('.sidebar-wrapper .overlay').removeClass('d-none');
+    })
+
     //New Shipment Button Click
-    $('#new-shipment-btn').on('click', function () {
+    $('#new-shipment-btn,#new-shipment-fab-btn').on('click', function () {
         if ($(this).hasClass('active')) {
             $(this).removeClass('active');
             $('.new-shipment-sidebar').removeClass('show');
@@ -17,7 +23,7 @@ $(document).ready(function () {
     //Cancel New Shipment Creation Btn Click
     $('#cancel-newshipment-creation-btn').on('click', function () {
         $('.new-shipment-sidebar').removeClass('show');
-        $('#new-shipment-btn').removeClass('active');
+        $('#new-shipment-btn,#new-shipment-fab-btn').removeClass('active');
     })
 
     //Currency Coverter Btn Click
@@ -43,25 +49,8 @@ $(document).ready(function () {
     //Right panel overlay click
     $('.sidebar-wrapper .overlay').on('click', function () {
         $(this).addClass('d-none');
-        $('.new-shipment-sidebar,.currency-converter-sidebar').removeClass('show');
+        $('.sidebar-wrapper').removeClass('show');
         $('#new-shipment-btn,#currency-converter-btn').removeClass('active');
-    })
-
-
-    //Notifications Bell Btn Click
-    $('#notifications-btn').on('click', function () {
-        if ($(this).hasClass('active')) {
-            $(this).removeClass('active');
-            $('.notifications-panel').removeClass('show');
-            $('.notifications-wrapper .pointer').addClass('d-none');
-            $('.topbar-right .overlay').addClass('d-none');
-        }
-        else {
-            $(this).addClass('active');
-            $('.notifications-panel').addClass('show');
-            $('.notifications-wrapper .pointer').removeClass('d-none');
-            $('.topbar-right .overlay').removeClass('d-none');
-        }
     })
 
     //User Avatar Click
@@ -219,6 +208,19 @@ $(document).ready(function () {
     $('#cancel-profile-settings-panel').on('click', function () {
         $('.profile-settings-popup').removeClass('show');
         $('.profile-settings-popup .overlay').addClass('d-none');
+    })
+
+    // Dropdown menu Script
+    $('.dropdown-btn').on('focus', function () {
+        if ($(this).parent().hasClass('active')) {
+            $(this).parent().removeClass('active');
+        }
+        else {
+            $(this).parent().addClass('active');
+        }
+    })
+    $('.dropdown-btn').on('focusout', function () {
+        $(this).parent().removeClass('active');
     })
 
 })
