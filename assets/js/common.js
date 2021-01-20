@@ -46,6 +46,11 @@ $(document).ready(function () {
         $('#currency-converter-btn').removeClass('active');
     })
 
+    //Close Sidebar Button for Mobile and Tablet Click
+    $('#mobile-tablet-close-sidebar-btn').on('click',function(){
+        $('.sidebar-wrapper').removeClass('show');
+    })
+
     //Right panel overlay click
     $('.sidebar-wrapper .overlay').on('click', function () {
         $(this).addClass('d-none');
@@ -221,6 +226,12 @@ $(document).ready(function () {
     })
     $('.dropdown-btn').on('focusout', function () {
         $(this).parent().removeClass('active');
+    })
+
+    //Profile Settings Button Mobile/Tablet Sidebar Menu
+    $('#profile-settings-btn-mobile-tab').on('click',function(){
+        $('.tablet-mobile-sidebar-menu').removeClass('show');
+        $('.profile-settings-popup').addClass('show');
     })
 
 })
