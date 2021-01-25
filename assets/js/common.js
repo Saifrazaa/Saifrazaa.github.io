@@ -47,7 +47,7 @@ $(document).ready(function () {
     })
 
     //Close Sidebar Button for Mobile and Tablet Click
-    $('#mobile-tablet-close-sidebar-btn').on('click',function(){
+    $('#mobile-tablet-close-sidebar-btn').on('click', function () {
         $('.sidebar-wrapper').removeClass('show');
     })
 
@@ -229,9 +229,48 @@ $(document).ready(function () {
     })
 
     //Profile Settings Button Mobile/Tablet Sidebar Menu
-    $('#profile-settings-btn-mobile-tab').on('click',function(){
+    $('#profile-settings-btn-mobile-tab').on('click', function () {
         $('.tablet-mobile-sidebar-menu').removeClass('show');
         $('.profile-settings-popup').addClass('show');
+    })
+
+    // Dashboard Filter Buttons Click
+    $('.dashboard-filter-btn').on('click', function () {
+        $('.dashboard-filter-btn').removeClass('active');
+        $(this).addClass('active');
+    })
+
+    //Custom Filter Button Click on Dashboard
+    $('#dashboard-custom-filter-btn').on('click', function () {
+        $('.dashboard-filter-btn').removeClass('active');
+        $(this).addClass('active');
+        $('.dashboard-filter-panel').addClass('show');
+    })
+
+    //Discard Custom Filter
+    $('#discard-custom-filter').on('click', function () {
+        $('#dashboard-custom-filter-btn').removeClass('active');
+        $('.dashboard-filter-panel').removeClass('show');
+    })
+
+    //Apply Button Click Custom Filter
+    $('#apply-filter-dashboard-btn').on('click', function () {
+        $('.dashboard-filter-panel').removeClass('show');
+        $('#dashboard-custom-filter-btn').removeClass('active');
+        $('.loader-wrapper').removeClass('d-none');
+        setTimeout(() => {
+            $('.loader-wrapper').addClass('d-none');
+            $('.applied-filters-section').removeClass('d-none');
+        }, 3000)
+    })
+
+    // Clear Dashboard Applied Filters
+    $('#clear-dashboard-applied-filters').on('click', function () {
+        $('.loader-wrapper').removeClass('d-none');
+        setTimeout(() => {
+            $('.loader-wrapper').addClass('d-none');
+            $('.applied-filters-section').addClass('d-none');
+        }, 1500)
     })
 
 })
