@@ -166,10 +166,11 @@ $(document).ready(function () {
             $('.new-shipment-form .step-2-form').removeClass('d-none');
         }
         else if (!($('.step.step-2').hasClass('completed'))) {
+            $(this).addClass('d-none');
             $('.step.step-2').removeClass('active');
             $('.step.step-2').addClass('completed');
             $('.step.step-3').addClass('active');
-            $(this).text('Finish');
+            $('#new-shipment-finish-btn').removeClass('d-none');
 
             // New Shipment Form Level 2 Hide and Level 3 Show
             $('.new-shipment-form .step-2-form').addClass('d-none');
@@ -183,7 +184,8 @@ $(document).ready(function () {
             $('.step.step-3').removeClass('active');
             $('.step.step-2').removeClass('completed');
             $('.step.step-2').addClass('active');
-            $('#new-shipment-next-btn').text('Next');
+            $('#new-shipment-next-btn').removeClass('d-none');
+            $('#new-shipment-finish-btn').addClass('d-none');
 
             // New Shipment Form Level 3 Hide and Level 2 Show
             $('.new-shipment-form .step-3-form').addClass('d-none');
@@ -207,6 +209,21 @@ $(document).ready(function () {
             $('.ship-vehicle-images-wrap .vehicle-img').removeClass('selected')
             $(this).addClass('selected');
         }
+    })
+
+    //Finish Button Click New Shipment Creation
+    $('#new-shipment-finish-btn').on('click', function () {
+        $('.new-shipment-sidebar').removeClass('show');
+        $('.step').removeClass('active completed');
+        $('.step.step-1').addClass('active');
+        $('#new-shipment-btn').removeClass('active');
+        $('.new-shipment-form .step-2-form,.new-shipment-form .step-3-form').addClass('d-none');
+        $('.new-shipment-form .step-1-form').removeClass('d-none');
+        $(this).addClass('d-none');
+        $('#new-shipment-next-btn').removeClass('d-none');
+        $('.snack-bar-wrapper').removeClass('d-none');
+        $('.snack-bar-msg-wrapper').text('New Shipment Created !!!');
+        $('#new-shipment-fab-btn').removeClass('active');
     })
 
     //Cancel Profile Settings Panel Button Click
@@ -271,6 +288,12 @@ $(document).ready(function () {
             $('.loader-wrapper').addClass('d-none');
             $('.applied-filters-section').addClass('d-none');
         }, 1500)
+    })
+
+    //Close Snack Bar Cross Click
+    $('.close-snack-bar').on('click', function () {
+        $(this).parent().children('.snack-bar-msg-wrapper').text('')
+        $(this).parent().addClass('d-none');
     })
 
 })
